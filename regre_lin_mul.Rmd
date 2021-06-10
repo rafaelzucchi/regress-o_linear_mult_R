@@ -1,0 +1,36 @@
+---
+title: "regressao_linear_mult"
+author: "Zucchi"
+date: "10/06/2021"
+output: html_document
+---
+#abrindo a biblioteca ggplot
+```{r}
+library(ggplot2)
+```
+#atribuindo a tabela de dados a uma variável
+```{r}
+house <- read.csv('C:\\Users\\rafae\\Desktop\\Pos_Data\\estat_2\\house_sales.csv')
+```
+#exibir somente algumas variáveis para analisar
+```{r}
+head(house[,c("AdjSalePrice", "SqFtTotLiving", "SqFtLot", "Bathrooms", 
+               "Bedrooms", "BldgGrade")])
+```
+#fazendo a regressao linear calculando o preço ajustado em relação a outras vari.
+#o final do codigo (na.action=na.omit), faz com que elimine os dados faltantes
+```{r}
+house_lm <- lm(AdjSalePrice ~ SqFtTotLiving + SqFtLot + Bathrooms + 
+                 Bedrooms + BldgGrade,  
+               data=house, na.action=na.omit)
+```
+#checando o coeficiente para cada variavel
+```{r}
+house_lm
+```
+#verificando os dados do modelo
+```{r}
+summary(house_lm)
+```
+
+
